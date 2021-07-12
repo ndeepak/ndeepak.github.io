@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deepak's Portfolio</title>
+
+    <style>
+      body {
+        background-color: #eaf6f6;
+        text-align: center;
+      }
+
+      a,h1,h2,h3,h4,h5 {
+        color: #66bfbf;
+      }
+      p{
+        color: #007575;
+      }
+
+      hr {
+        background-color: white;
+        border-style: none;
+        border-top-style: dotted;
+        border-color: grey;
+        border-width: 5px;
+        width: 5%;
+      }
+      table, th, td {
+        color: #007575;
+        margin-left: auto; 
+        margin-right: auto;
+        border: 1px solid black;
+        border-collapse: collapse;
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+        
+        
+    </style>
+  </head>
+
+  <body>
+    <div id="loading">loading...</div>
+    <div class="main" id="mainCountainer" hidden>
+      <img height="100" width="100" id="profileImage" />
+      <h2 id="fullName"></h2>
+      <p id="bio"></p>
+      <h5 id="followersInformation"></h5>
+      <p>Check me on <a id="githublink">Github</a></p>
+      <hr>
+      <h3>Education Background</h3>
+      <table class="center" cellspacing="10" >
+          <tr>
+            <th>Dates</th>
+            <th>Level</th>
+            <th>School names</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2075-2079</td>
+            <td>BScCSIT</td>
+            <td>Vedas College, Jwalakhel, Lalitpur.</td>
+          </tr>
+          <tr>
+            <td>2073/2074</td>
+            <td>+2</td>
+            <td>Caspian Valley College, Kumaripati, Lalitpur.</td>
+          </tr>
+          <tr>
+            <td>2072</td>
+            <td>SLC</td>
+            <td>Himali Boarding School, Janakpurdham, Dhanusha.</td>
+          </tr>
+        </tbody>
+      </table>
+      <hr>
+      <a
+        class="twitter-timeline"
+        data-width="400"
+        data-height="400"
+        href="https://twitter.com/NDeepak_?ref_src=twsrc%5Etfw"
+        >Tweets by NDeepak_</a
+      >
+      <script
+        async
+        src="https://platform.twitter.com/widgets.js"
+        charset="utf-8"
+      >
+    </script>
+    <hr>
+    </div>
+    <div>
+        <h3>My projects</h1>
+         <div>
+             <h2 id="project__name" class="prj_name"></h2>
+              <a id="source_code" class="source">Source Code</a>
+         </div>
+         <div class="projects__details">
+          <h2 id="project__name1" class="prj_name"></h2>
+           <a id="source_code1" class="source">Source Code</a>
+      </div>
+    <div>
+      <script>
+        fetch("https://api.github.com/users/ndeepak")
+          .then((response) => response.json())
+          .then(function (data) {
+            console.log(data);
+
+            let fc = data["followers"];
+            let followersInfo = `I have been followed by ${fc} awesome People on Github`;
+
+            document.getElementById("profileImage").src = data["avatar_url"];
+
+            document.getElementById("fullName").textContent = data["name"];
+            document.getElementById("bio").textContent = data["bio"];
+            document.getElementById("followersInformation").textContent =
+              followersInfo;
+
+            document.getElementById("githublink").href = data["html_url"];
+            
+          });
+
+      fetch("https://api.github.com/users/ndeepak/repos")
+      .then(res=> res.json())
+      .then(data=> {
+        project__name.innerHTML = `Name: ${data[0]['name']}`;
+        source_code.href = data[0]['svn_url'];
+        project__name1.innerHTML = `Name: ${data[1]['name']}`;       
+        source_code1.href = data[1]['svn_url'];
+        document.getElementById("mainCountainer").hidden = false;
+        document.getElementById("loading").hidden = true;
+      })
+      
+      </script>
+    </div>
+  </body>
+</html>
