@@ -77,13 +77,14 @@
         </tbody>
       </table>
       <hr>
-      <a
+      <center>
+        <a
         class="twitter-timeline"
-        data-width="400"
-        data-height="400"
+        data-width="600"
+        data-height="500"
         href="https://twitter.com/NDeepak_?ref_src=twsrc%5Etfw"
-        >Tweets by NDeepak_</a
-      >
+        >Tweets by NDeepak_</a>
+      </center>
       <script
         async
         src="https://platform.twitter.com/widgets.js"
@@ -128,8 +129,10 @@
       .then(data=> {
         project__name.innerHTML = `Name: ${data[0]['name']}`;
         source_code.href = data[0]['svn_url'];
+
         project__name1.innerHTML = `Name: ${data[1]['name']}`;       
         source_code1.href = data[1]['svn_url'];
+
         document.getElementById("mainCountainer").hidden = false;
         document.getElementById("loading").hidden = true;
       })
