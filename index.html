@@ -1,160 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deepak's Portfolio</title>
 
-    <!-- Inline CSS for quick styling -->
+    <!-- Inline CSS for styling -->
     <style>
         body {
-            background-color: #eaf6f6;
-            text-align: center;
+            background-color: #f4f8fb;
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
         }
 
-        a, h1, h2, h3, h4, h5 {
-            color: #66bfbf;
+        header {
+            background-color: #007575;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        h2 {
+            color: #007575;
+            margin-bottom: 10px;
         }
 
         p {
-            color: #007575;
-        }
-
-        hr {
-            background-color: white;
-            border: none;
-            border-top: 5px dotted grey;
-            width: 5%;
-            margin: 20px auto;
+            margin-bottom: 15px;
         }
 
         table {
-            color: #007575;
-            margin: 20px auto;
+            width: 100%;
             border-collapse: collapse;
-            width: 80%;
+            margin: 20px 0;
         }
 
         th, td {
-            border: 1px solid black;
+            border: 1px solid #ddd;
             padding: 10px;
-            text-align: center;
+            text-align: left;
         }
 
-        /* Centered container for better alignment */
-        .main {
-            margin: 20px auto;
-            max-width: 600px;
+        th {
+            background-color: #66bfbf;
+            color: white;
         }
 
         .projects__details {
+            margin: 20px 0;
+        }
+
+        .experience {
             margin-top: 20px;
         }
 
-        #loading {
-            font-size: 24px;
+        .footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #007575;
+            color: white;
+            margin-top: 20px;
+        }
+
+        a {
             color: #007575;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .loading {
+            text-align: center;
+            font-size: 20px;
+            color: #007575;
+            margin-top: 20px;
         }
     </style>
 </head>
 
 <body>
-    <!-- Loading placeholder -->
-    <div id="loading">Loading...</div>
+    <!-- Header -->
+    <header>
+        <h1>Deepak Nagarkoti - Portfolio</h1>
+    </header>
 
-    <!-- Main container -->
-    <div class="main" id="mainContainer" hidden>
-        <img height="100" width="100" id="profileImage" alt="Profile Image" />
-        <h2 id="fullName"></h2>
-        <p id="bio"></p>
-        <h5 id="followersInformation"></h5>
-        <p>Check me on <a id="githublink" target="_blank">GitHub</a></p>
-        <hr>
+    <!-- Loading Placeholder -->
+    <div id="loading" class="loading">Loading...</div>
 
-        <!-- Education section -->
-        <h3>Education Background</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Dates</th>
-                    <th>Level</th>
-                    <th>School Name</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>2075-2079</td>
-                    <td>BScCSIT</td>
-                    <td>Vedas College, Jwalakhel, Lalitpur</td>
-                </tr>
-                <tr>
-                    <td>2073/2074</td>
-                    <td>+2</td>
-                    <td>Caspian Valley College, Kumaripati, Lalitpur</td>
-                </tr>
-                <tr>
-                    <td>2072</td>
-                    <td>SLC</td>
-                    <td>Himali Boarding School, Janakpurdham, Dhanusha</td>
-                </tr>
-            </tbody>
-        </table>
-        <hr>
-
-        <!-- Twitter embed -->
-        <center>
-            <a class="twitter-timeline" data-width="600" data-height="500" href="https://twitter.com/NDeepak_?ref_src=twsrc%5Etfw">Tweets by NDeepak_</a>
-        </center>
-        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-        <hr>
-
-        <!-- Projects section -->
-        <h3>My Projects</h3>
-        <div class="projects__details">
-            <div>
-                <h4 id="project__name"></h4>
-                <a id="source_code" target="_blank">Source Code</a>
-            </div>
-            <div>
-                <h4 id="project__name1"></h4>
-                <a id="source_code1" target="_blank">Source Code</a>
-            </div>
+    <!-- Main Content -->
+    <div class="container" id="mainContainer" hidden>
+        <!-- Profile Section -->
+        <div class="profile">
+            <img id="profileImage" alt="Profile Image" style="border-radius: 50%; width: 150px; height: 150px;" />
+            <h2 id="fullName"></h2>
+            <p id="bio"></p>
+            <p><a id="githublink" target="_blank">Visit my GitHub</a></p>
+            <p id="followersInformation"></p>
         </div>
+
+        <!-- Education Section -->
+        <section>
+            <h2>Education</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Level</th>
+                        <th>Institution</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2075-2079</td>
+                        <td>BScCSIT</td>
+                        <td>Vedas College, Jwalakhel, Lalitpur</td>
+                    </tr>
+                    <tr>
+                        <td>2073/2074</td>
+                        <td>+2</td>
+                        <td>Caspian Valley College, Kumaripati, Lalitpur</td>
+                    </tr>
+                    <tr>
+                        <td>2072</td>
+                        <td>SLC</td>
+                        <td>Himali Boarding School, Janakpurdham, Dhanusha</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="experience">
+            <h2>Experience</h2>
+            <ul>
+                <li><strong>CAS Finacle Environment Setup</strong>: Currently managing and configuring the CAS environment for banking systems, ensuring high availability and optimized performance.</li>
+                <li><strong>Omnidocs Support</strong>: Providing operational support for document management systems, troubleshooting, and deploying updates.</li>
+                <li><strong>Intern Training</strong>: Mentoring second-year computing students in Linux, Git, and DevOps practices.</li>
+            </ul>
+        </section>
+
+        <!-- Projects Section -->
+        <section>
+            <h2>Projects</h2>
+            <div class="projects__details">
+                <h4 id="project__name"></h4>
+                <p><a id="source_code" target="_blank">Source Code</a></p>
+                <h4 id="project__name1"></h4>
+                <p><a id="source_code1" target="_blank">Source Code</a></p>
+            </div>
+        </section>
     </div>
 
-    <!-- JavaScript to fetch GitHub data dynamically -->
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 Deepak Nagarkoti</p>
+    </div>
+
+    <!-- JavaScript for GitHub Data -->
     <script>
-        // Fetch user data from GitHub API
-        fetch("https://api.github.com/users/ndeepak")
-            .then((response) => response.json())
-            .then((data) => {
-                document.getElementById("profileImage").src = data.avatar_url;
-                document.getElementById("fullName").textContent = data.name || "Deepak Nagarkoti";
-                document.getElementById("bio").textContent = data.bio || "No bio available";
-                document.getElementById("followersInformation").textContent = `Followed by ${data.followers} awesome people on GitHub`;
-                document.getElementById("githublink").href = data.html_url;
-
-                // Show main container and hide loading message
-                document.getElementById("mainContainer").hidden = false;
-                document.getElementById("loading").hidden = true;
-            });
-
-        // Fetch repository data from GitHub API
-        fetch("https://api.github.com/users/ndeepak/repos")
-            .then((response) => response.json())
-            .then((data) => {
-                if (data.length > 0) {
-                    document.getElementById("project__name").textContent = data[0].name;
-                    document.getElementById("source_code").href = data[0].html_url;
-
-                    if (data.length > 1) {
-                        document.getElementById("project__name1").textContent = data[1].name;
-                        document.getElementById("source_code1").href = data[1].html_url;
+        // Function to fetch GitHub profile data
+        function fetchGitHubProfile() {
+            fetch("https://api.github.com/users/ndeepak")
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error("Failed to fetch profile data");
                     }
-                }
-            });
+                    return response.json();
+                })
+                .then((data) => {
+                    document.getElementById("profileImage").src = data.avatar_url;
+                    document.getElementById("fullName").textContent = data.name || "Deepak Nagarkoti";
+                    document.getElementById("bio").textContent = data.bio || "No bio available.";
+                    document.getElementById("followersInformation").textContent = `Followed by ${data.followers} people on GitHub.`;
+                    document.getElementById("githublink").href = data.html_url;
+
+                    document.getElementById("mainContainer").hidden = false;
+                    document.getElementById("loading").hidden = true;
+                })
+                .catch((error) => {
+                    console.error(error);
+                    document.getElementById("loading").textContent = "Failed to load profile data.";
+                });
+        }
+
+        // Function to fetch GitHub repositories
+        function fetchGitHubRepositories() {
+            fetch("https://api.github.com/users/ndeepak/repos")
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error("Failed to fetch repositories");
+                    }
+                    return response.json();
+                })
+                .then((data) => {
+                    if (data.length > 0) {
+                        document.getElementById("project__name").textContent = data[0].name;
+                        document.getElementById("source_code").href = data[0].html_url;
+
+                        if (data.length > 1) {
+                            document.getElementById("project__name1").textContent = data[1].name;
+                            document.getElementById("source_code1").href = data[1].html_url;
+                        }
+                    }
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        }
+
+        // Initialize Data Fetch
+        fetchGitHubProfile();
+        fetchGitHubRepositories();
     </script>
 </body>
+
 </html>
