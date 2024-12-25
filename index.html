@@ -1,95 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deepak's Portfolio</title>
-
-    <!-- Inline CSS for styling -->
-    <style>
-        body {
-            background-color: #f4f8fb;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-
-        header {
-            background-color: #007575;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 0 15px;
-        }
-
-        h2 {
-            color: #007575;
-            margin-bottom: 10px;
-        }
-
-        p {
-            margin-bottom: 15px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #66bfbf;
-            color: white;
-        }
-
-        .projects__details {
-            margin: 20px 0;
-        }
-
-        .experience {
-            margin-top: 20px;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 10px 0;
-            background-color: #007575;
-            color: white;
-            margin-top: 20px;
-        }
-
-        a {
-            color: #007575;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .loading {
-            text-align: center;
-            font-size: 20px;
-            color: #007575;
-            margin-top: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
     <!-- Header -->
     <header>
@@ -103,7 +20,7 @@
     <div class="container" id="mainContainer" hidden>
         <!-- Profile Section -->
         <div class="profile">
-            <img id="profileImage" alt="Profile Image" style="border-radius: 50%; width: 150px; height: 150px;" />
+            <img id="profileImage" alt="Profile Image">
             <h2 id="fullName"></h2>
             <p id="bio"></p>
             <p><a id="githublink" target="_blank">Visit my GitHub</a></p>
@@ -145,10 +62,23 @@
         <section class="experience">
             <h2>Experience</h2>
             <ul>
-                <li><strong>CAS Finacle Environment Setup</strong>: Currently managing and configuring the CAS environment for banking systems, ensuring high availability and optimized performance.</li>
-                <li><strong>Omnidocs Support</strong>: Providing operational support for document management systems, troubleshooting, and deploying updates.</li>
-                <li><strong>Intern Training</strong>: Mentoring second-year computing students in Linux, Git, and DevOps practices.</li>
+                <li><strong>CAS Finacle Environment Setup</strong>: Managing banking systems, ensuring high availability and optimized performance.</li>
+                <li><strong>Omnidocs Support</strong>: Operational support for document management systems.</li>
+                <li><strong>Intern Training</strong>: Mentoring students in Linux, Git, and DevOps practices.</li>
             </ul>
+        </section>
+		
+		
+		<!-- Blog Section -->
+        <section class="section">
+            <h2>Blogs</h2>
+            <p>Read my latest blogs on Medium: <a href="https://medium.com/ndeepak_" target="_blank">http://medium.com/ndeepak_</a></p>
+        </section>
+
+        <!-- DevOps Notes Section -->
+        <section class="section">
+            <h2>DevOps Notes</h2>
+            <p>Explore my DevOps learning notes on GitHub: <a href="https://github.com/ndeepak/DevOpsLearning" target="_blank">https://github.com/ndeepak/DevopsLearning</a></p>
         </section>
 
         <!-- Projects Section -->
@@ -161,6 +91,9 @@
                 <p><a id="source_code1" target="_blank">Source Code</a></p>
             </div>
         </section>
+		
+		 
+		
     </div>
 
     <!-- Footer -->
@@ -168,62 +101,6 @@
         <p>&copy; 2024 Deepak Nagarkoti</p>
     </div>
 
-    <!-- JavaScript for GitHub Data -->
-    <script>
-        // Function to fetch GitHub profile data
-        function fetchGitHubProfile() {
-            fetch("https://api.github.com/users/ndeepak")
-                .then((response) => {
-                    if (!response.ok) {
-                        throw new Error("Failed to fetch profile data");
-                    }
-                    return response.json();
-                })
-                .then((data) => {
-                    document.getElementById("profileImage").src = data.avatar_url;
-                    document.getElementById("fullName").textContent = data.name || "Deepak Nagarkoti";
-                    document.getElementById("bio").textContent = data.bio || "No bio available.";
-                    document.getElementById("followersInformation").textContent = `Followed by ${data.followers} people on GitHub.`;
-                    document.getElementById("githublink").href = data.html_url;
-
-                    document.getElementById("mainContainer").hidden = false;
-                    document.getElementById("loading").hidden = true;
-                })
-                .catch((error) => {
-                    console.error(error);
-                    document.getElementById("loading").textContent = "Failed to load profile data.";
-                });
-        }
-
-        // Function to fetch GitHub repositories
-        function fetchGitHubRepositories() {
-            fetch("https://api.github.com/users/ndeepak/repos")
-                .then((response) => {
-                    if (!response.ok) {
-                        throw new Error("Failed to fetch repositories");
-                    }
-                    return response.json();
-                })
-                .then((data) => {
-                    if (data.length > 0) {
-                        document.getElementById("project__name").textContent = data[0].name;
-                        document.getElementById("source_code").href = data[0].html_url;
-
-                        if (data.length > 1) {
-                            document.getElementById("project__name1").textContent = data[1].name;
-                            document.getElementById("source_code1").href = data[1].html_url;
-                        }
-                    }
-                })
-                .catch((error) => {
-                    console.error(error);
-                });
-        }
-
-        // Initialize Data Fetch
-        fetchGitHubProfile();
-        fetchGitHubRepositories();
-    </script>
+    <script src="scripts.js"></script>
 </body>
-
 </html>
